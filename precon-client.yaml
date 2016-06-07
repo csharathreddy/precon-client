@@ -6,8 +6,8 @@ info:
 paths: 
   /user:
     post:
-      summary: Add user 
-      description: The endpoint is used for adding users
+      summary: Add new user. 
+      description: The endpoint is used for adding users.
       parameters:
         - name: user 
           in: body
@@ -19,7 +19,7 @@ paths:
         - User      
       responses:
         200:
-          description: User successfully added
+          description: User successfully added.
           
         default:
           description: Unexpected error
@@ -28,12 +28,12 @@ paths:
   
   /interest:
     post:
-      summary: Capture user interests 
-      description: The endpoint is used to capture user interests.
+      summary: Capture user interests. 
+      description: The endpoint is used for capturing user interests.
       parameters:
         - name: interests
           in: body
-          description: User interest Object
+          description: User interest Object.
           required: true
           schema:
             $ref: '#/definitions/Interest'
@@ -41,7 +41,7 @@ paths:
         - User      
       responses:
         200:
-          description: User interests successfully added
+          description: User interests successfully added.
           
         default:
           description: Unexpected error
@@ -50,8 +50,8 @@ paths:
             
   /search:
     get:
-      summary: Search for contents 
-      description: The endpoint is used by user to search for contents 
+      summary: Search for contents. 
+      description: The endpoint is used by user to search for contents. 
       parameters:
         - name: search
           in: query
@@ -77,21 +77,21 @@ paths:
             $ref: '#/definitions/Error'          
             
   /suggest:
-     get:
+    get:
       summary: Returns suggestions for user. 
       description: The endpoint is used for recommending related contents for user.
       parameters:
-        - name: search
-          in: query
-          description: Search query string.
-          required: true
-          type: string
-          format: string
+      - name: user
+        in: body
+        description: User Object
+        required: true
+        schema:
+          $ref: '#/definitions/User'
       tags:
         - User      
       responses:
         200:
-          description: Yayy..!! found some movies for you.
+          description: Cool..!! found some recommendations for you.
           schema:
             type: array
             items:

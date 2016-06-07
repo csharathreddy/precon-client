@@ -48,16 +48,16 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   /search:
-    post:
+    get:
       summary: Search for contents 
-      description: The endpoint is used for user to search contents 
+      description: The endpoint is used by user to search for contents 
       parameters:
-        - name: search 
+        - name: search
           in: query
-          description: User interest Object
+          description: search query string.
           required: true
-          schema:
-            $ref: '#/definitions/Interest'
+          type: string
+          format: string
       tags:
         - User      
       responses:

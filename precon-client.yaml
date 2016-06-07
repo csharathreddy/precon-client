@@ -29,9 +29,9 @@ paths:
   /interest:
     post:
       summary: Capture user interests 
-      description: The endpoint is used for user interest
+      description: The endpoint is used to capture user interests.
       parameters:
-        - name: interests 
+        - name: interests
           in: body
           description: User interest Object
           required: true
@@ -47,6 +47,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+            
   /search:
     get:
       summary: Search for contents 
@@ -54,7 +55,7 @@ paths:
       parameters:
         - name: search
           in: query
-          description: search query string.
+          description: Search query string.
           required: true
           type: string
           format: string
@@ -62,12 +63,47 @@ paths:
         - User      
       responses:
         200:
-          description: User interests successfully added
+          description: Yayy..!! found some movies for you.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SearchResults'
+        404:
+          description: Ohh..!! could not find any related movies.
           
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'          
+            
+  /suggest:
+     get:
+      summary: Returns suggestions for user. 
+      description: The endpoint is used for recommending related contents for user.
+      parameters:
+        - name: search
+          in: query
+          description: Search query string.
+          required: true
+          type: string
+          format: string
+      tags:
+        - User      
+      responses:
+        200:
+          description: Yayy..!! found some movies for you.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SearchResults'
+        404:
+          description: Ohh..!! could not find any related movies.
+          
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    
 definitions:
   User:
     type: object
@@ -118,7 +154,64 @@ definitions:
       contentSourceId:
         description: source id of the content.
         type: string
-        format: string      
+        format: string    
+  
+  SearchResults:
+    type: object
+    properties:
+      title:
+        description: Title of the content.
+        type: string
+        format: string
+      type:
+        description: Type of the content - movie, video, tvshow, tvseries.
+        type: string
+        format: string
+      classification:
+        description: Comma seperated list of tags or genere or classification of the content. Like music, video, rap, punjabi Or sports, cricket, highlights or biopic, sports 
+        type: string
+        format: string
+      sourceId:
+        description: Unique id of the content as per the integration system.
+        type: string
+        format: string  
+      integrationId:
+        description: Unique id of the integrator as per the integration system.
+        type: string
+        format: string
+      language:
+        description: Language of the content.
+        type: string
+        format: string
+      runningTimeInSecs:
+        description: Playback time of the content in seconds.
+        type: integer
+        format: int32
+      cast:
+        description: Comma separated list of cast starring in the content.
+        type: string
+        format: string
+      directors:
+        description: Comma separated list of directors.
+        type: string
+        format: string
+      studios:
+        description: Comma separated list of studios.
+        type: string
+        format: string
+      releasedOn:
+        description: Date on which the content was released.
+        type: string
+        format: date
+      synopsis:
+        description: Synopsis of the content.
+        type: string
+        format: string
+      keywords:
+        description: keywords related to content.
+        type: string
+        format: string
+        
   Error:
     type: object
     properties:

@@ -47,6 +47,27 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /search:
+    post:
+      summary: Search for contents 
+      description: The endpoint is used for user to search contents 
+      parameters:
+        - name: search 
+          in: query
+          description: User interest Object
+          required: true
+          schema:
+            $ref: '#/definitions/Interest'
+      tags:
+        - User      
+      responses:
+        200:
+          description: User interests successfully added
+          
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'          
 definitions:
   User:
     type: object

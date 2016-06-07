@@ -1,0 +1,110 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Precon-Client
+  description: Client API for precon.io
+paths: 
+  /user:
+    post:
+      summary: Add user 
+      description: The endpoint is used for adding users
+      parameters:
+        - name: user 
+          in: body
+          description: User Object
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User      
+      responses:
+        200:
+          description: User successfully added
+          
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /interest:
+    post:
+      summary: Capture user interests 
+      description: The endpoint is used for user interest
+      parameters:
+        - name: interests 
+          in: body
+          description: User interest Object
+          required: true
+          schema:
+            $ref: '#/definitions/Interest'
+      tags:
+        - User      
+      responses:
+        200:
+          description: User interests successfully added
+          
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  User:
+    type: object
+    required:
+      - email
+    properties:
+      email:
+        description: email id of the user.
+        type: string
+        format: email
+      
+      phone:
+        description: phone number of the user.
+        type: integer
+        format: int32
+        
+      gender:
+        description: gender of the user.
+        type: string
+        format: string
+      
+      age:
+        description: age of the user.
+        type: integer
+        format: int32  
+      
+      country:
+        description: country of the user.
+        type: string
+        format: string
+      
+      sourceId:
+        description: source id from the integrator
+        type: string
+        format: string
+  
+  Interest:
+    type: object
+    required:
+      - email
+      - contentSourceId
+    properties:
+      email:
+        description: email id of the user.
+        type: string
+        format: email
+      
+      contentSourceId:
+        description: source id of the content.
+        type: string
+        format: string      
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

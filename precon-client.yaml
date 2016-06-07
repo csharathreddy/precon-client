@@ -7,7 +7,7 @@ paths:
   /user:
     post:
       summary: Add new user. 
-      description: The endpoint is used for adding users.
+      description: This endpoint is used for adding users.
       parameters:
         - name: user 
           in: body

@@ -78,7 +78,7 @@ paths:
             
   /suggest:
     get:
-      summary: Returns suggestions for user. 
+      summary: Gives content suggestions for user. 
       description: The endpoint is used for recommending related contents for user.
       parameters:
       - name: user

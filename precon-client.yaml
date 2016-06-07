@@ -67,7 +67,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/SearchResults'
+              $ref: '#/definitions/QueryResults'
         404:
           description: Ohh..!! could not find any related movies.
           
@@ -82,11 +82,11 @@ paths:
       description: The endpoint is used for recommending related contents for user.
       parameters:
       - name: user
-        in: body
-        description: User Object
+        in: query
+        description: User email address.
         required: true
-        schema:
-          $ref: '#/definitions/User'
+        type: string
+        format: email
       tags:
         - User      
       responses:
@@ -95,7 +95,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/SearchResults'
+              $ref: '#/definitions/QueryResults'
         404:
           description: Ohh..!! could not find any related movies.
           
@@ -156,61 +156,13 @@ definitions:
         type: string
         format: string    
   
-  SearchResults:
+  QueryResults:
     type: object
     properties:
-      title:
-        description: Title of the content.
-        type: string
-        format: string
-      type:
-        description: Type of the content - movie, video, tvshow, tvseries.
-        type: string
-        format: string
-      classification:
-        description: Comma seperated list of tags or genere or classification of the content. Like music, video, rap, punjabi Or sports, cricket, highlights or biopic, sports 
-        type: string
-        format: string
       sourceId:
         description: Unique id of the content as per the integration system.
         type: string
         format: string  
-      integrationId:
-        description: Unique id of the integrator as per the integration system.
-        type: string
-        format: string
-      language:
-        description: Language of the content.
-        type: string
-        format: string
-      runningTimeInSecs:
-        description: Playback time of the content in seconds.
-        type: integer
-        format: int32
-      cast:
-        description: Comma separated list of cast starring in the content.
-        type: string
-        format: string
-      directors:
-        description: Comma separated list of directors.
-        type: string
-        format: string
-      studios:
-        description: Comma separated list of studios.
-        type: string
-        format: string
-      releasedOn:
-        description: Date on which the content was released.
-        type: string
-        format: date
-      synopsis:
-        description: Synopsis of the content.
-        type: string
-        format: string
-      keywords:
-        description: keywords related to content.
-        type: string
-        format: string
         
   Error:
     type: object

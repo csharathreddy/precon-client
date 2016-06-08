@@ -74,6 +74,10 @@ paths:
               $ref: '#/definitions/QueryResults'
         404:
           description: Ohh..!! could not find any related movies.
+          schema:
+            type: array
+            items: 
+              type: object
           
         default:
           description: Unexpected error
@@ -102,6 +106,10 @@ paths:
               $ref: '#/definitions/QueryResults'
         404:
           description: Ohh..!! could not find any related movies.
+          schema:
+            type: array
+            items: 
+              type: object
           
         default:
           description: Unexpected error

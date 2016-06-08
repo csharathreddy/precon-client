@@ -18,8 +18,10 @@ paths:
       tags:
         - User      
       responses:
-        200:
+        201:
           description: User successfully added.
+        400:
+          description: Invalid email address.  
           
         default:
           description: Unexpected error
@@ -40,8 +42,10 @@ paths:
       tags:
         - User      
       responses:
-        200:
+        201:
           description: User interests successfully added.
+        400:
+          description: Invalid email address.  
           
         default:
           description: Unexpected error

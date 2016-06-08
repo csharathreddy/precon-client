@@ -157,6 +157,7 @@ definitions:
     required:
       - email
       - contentSourceId
+      - type
     properties:
       email:
         description: Email id of the user.
@@ -166,7 +167,17 @@ definitions:
       contentSourceId:
         description: Source id of the content.
         type: string
-        format: string    
+        format: string   
+      
+      type: 
+        description: Interest type.
+        type: string
+        enum: ['bookmarked', 'viewed', 'consumed']
+        
+      consumptionTime:
+        description: If interest type is 'consumed' then consumptionTime is the total time consumed by the user for a particular content, else it is optional in remaining cases.
+        type: integer
+        format: int32
   
   QueryResults:
     type: object

@@ -119,8 +119,7 @@ paths:
 definitions:
   User:
     type: object
-    required:
-      - email
+    required: ['email', 'phone']
     properties:
       email:
         description: Email id of the user.

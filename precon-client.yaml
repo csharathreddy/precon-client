@@ -21,7 +21,7 @@ paths:
         201:
           description: User successfully added.
         400:
-          description: Invalid email address.  
+          description: Invalid email/phone number.  
           
         default:
           description: Unexpected error
@@ -45,7 +45,7 @@ paths:
         201:
           description: User interests successfully added.
         400:
-          description: Invalid email address.  
+          description: Invalid email/phone number.  
           
         default:
           description: Unexpected error
@@ -91,10 +91,10 @@ paths:
       parameters:
       - name: user
         in: query
-        description: User email address.
+        description: User email/phone number.
         required: true
         type: string
-        format: email
+        format: string
       tags:
         - User      
       responses:
@@ -125,7 +125,7 @@ definitions:
       email/phone:
         description: Email/phone number of the user.
         type: string
-        format: email
+        format: string
         
       gender:
         description: Gender of the user.
@@ -155,9 +155,9 @@ definitions:
       - type
     properties:
       email/phone:
-        description: Email/phone of the user.
+        description: Email/phone number of the user.
         type: string
-        format: email
+        format: string
       
       contentSourceId:
         description: Source id of the content.

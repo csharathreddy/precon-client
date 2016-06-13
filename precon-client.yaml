@@ -119,17 +119,13 @@ paths:
 definitions:
   User:
     type: object
-    required: ['email', 'phone']
+    required: 
+     - email/phone
     properties:
-      email:
-        description: Email id of the user.
+      email/phone:
+        description: Email/phone number of the user.
         type: string
         format: email
-      
-      phone:
-        description: Phone number of the user.
-        type: integer
-        format: int32
         
       gender:
         description: Gender of the user.
@@ -154,12 +150,12 @@ definitions:
   Interest:
     type: object
     required:
-      - email
+      - email/phone
       - contentSourceId
       - type
     properties:
-      email:
-        description: Email id of the user.
+      email/phone:
+        description: Email/phone of the user.
         type: string
         format: email
       

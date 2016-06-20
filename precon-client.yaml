@@ -180,7 +180,7 @@ definitions:
         enum: ['bookmarked', 'rated', 'consumed', 'liked', 'disliked']
         
       durationInSecs:
-        description: If interest type is 'consumed' then consumptionTime is the total time consumed by the user for a particular content, else it is optional in remaining cases.
+        description: If interest type is 'consumed' then durationInSecs is the total time consumed by the user for a particular content, else it is optional in remaining cases.
         type: integer
         format: int32
         

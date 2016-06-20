@@ -157,6 +157,7 @@ definitions:
     required:
       - email
       - contentSourceId
+      - userSourceId
       - type
     properties:
       email:
@@ -171,6 +172,11 @@ definitions:
       
       contentSourceId:
         description: Source id of the content.
+        type: string
+        format: string 
+      
+      userSourceId:
+        description: Source id of the user.
         type: string
         format: string   
       

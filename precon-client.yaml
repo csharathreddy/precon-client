@@ -121,6 +121,7 @@ definitions:
     type: object
     required: 
      - email
+     - sourceId
     properties:
       email:
         description: Email address of the user.

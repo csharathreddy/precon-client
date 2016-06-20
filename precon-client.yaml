@@ -120,10 +120,15 @@ definitions:
   User:
     type: object
     required: 
-     - email/phone
+     - email
     properties:
-      email/phone:
-        description: Email/phone number of the user.
+      email:
+        description: Email address of the user.
+        type: string
+        format: string
+      
+      mobile:
+        description: Mobile number of the user.
         type: string
         format: string
         
@@ -150,12 +155,17 @@ definitions:
   Interest:
     type: object
     required:
-      - email/phone
+      - email
       - contentSourceId
       - type
     properties:
-      email/phone:
-        description: Email/phone number of the user.
+      email:
+        description: Email address of the user.
+        type: string
+        format: string
+      
+      mobile:
+        description: Mobile number of the user.
         type: string
         format: string
       
@@ -167,12 +177,17 @@ definitions:
       type: 
         description: Interest type.
         type: string
-        enum: ['bookmarked', 'viewed', 'consumed']
+        enum: ['bookmarked', 'rated', 'consumed', 'liked', 'disliked']
         
-      consumptionTime:
+      durationInSecs:
         description: If interest type is 'consumed' then consumptionTime is the total time consumed by the user for a particular content, else it is optional in remaining cases.
         type: integer
         format: int32
+        
+      rating:
+        description: If interest type is 'rated' then provide rating, else it is optional in remaining cases.
+        type: integer
+        format: int32  
   
   QueryResults:
     type: object
